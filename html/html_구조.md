@@ -1,6 +1,6 @@
 # [TIL] HTML 구조
 
-## html구조
+### html구조
 
 ```html
 <!DOTYPE html>
