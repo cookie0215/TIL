@@ -1,5 +1,4 @@
-# [TIL] HTML 요소
-## inline요소와 block요소
+# [TIL] HTML inline 과 block
 
 ### inline 요소
 
