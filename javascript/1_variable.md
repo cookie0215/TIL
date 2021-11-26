@@ -1,5 +1,7 @@
 # [TIL] JS_변수
 
+![https://media.vlpt.us/images/cookie0215/post/53eb5c90-c810-4a5e-bca7-baeab42713d1/Untitled-1.png](https://media.vlpt.us/images/cookie0215/post/53eb5c90-c810-4a5e-bca7-baeab42713d1/Untitled-1.png)
+
 ## 4.1 변수란?
 어플리케이션은 데이터를 다루는 것으로, 데이터를 입력받아 처리하고 처리된 결과를 출력하는 것을 말한다.이때 변수가 이러한 데이터를 관리하기 위해 필요하다.
 
