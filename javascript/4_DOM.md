@@ -2,12 +2,14 @@
 
 
 ### DOM요소 생성
-> document.creatElement("생성할 태그");
+> **document.creatElement("생성할 태그");**
+
+<br>
 
 ### 생성된 DOM요소 삽입
-> 부모요소.append(태그노드);
-> 부모요소 안쪽에서 있는 기존 컨텐츠를 유지하면서 추가로 DOM 생성
->  *참고로 append는 element노드, 텍스트 노드 등을 넣을 수 있지만 appendChild는 오직 element노드만 넣을 수 있다.*
+> **부모요소.append(태그노드);**  
+> 부모요소 안쪽에서 있는 기존 컨텐츠를 유지하면서 추가로 DOM 생성  
+> *참고로 append는 element노드, 텍스트 노드 등을 넣을 수 있지만 appendChild는 오직 element노드만 넣을 수 있다.*
 
 <br>
 
@@ -25,4 +27,9 @@ html파일
 
 */
 ```
+<br>
+<br>
+
+### 동적으로 DOM요소에 class명 지정
+> **`document.querySelector("태그명").className = "abc";`**
 
