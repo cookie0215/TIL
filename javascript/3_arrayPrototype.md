@@ -243,3 +243,232 @@ function compare(a,b){
 nums.sort(compare);
 // [12, 10, 5, 3, 1]
 ```
+
+- sort()를 활용해 객체들의 key값을 정렬시킬 수도 있다.
+
+***[예제4] 이름순으로 정렬하기 (오름차순)***
+```javascript
+const classmate = [
+    {
+        name: "반해원",
+        age: 19,
+    },
+    {
+        name: "김나라",
+        age: 24,
+    },
+    {
+        name: "차미나",
+        age: 32,
+    },
+    {
+        name: "김천재",
+        age: 12,
+    },
+    {
+        name: "오승아",
+        age: 15,
+    },
+]
+
+function compare(a,b){
+    return a.name > b.name ? 1 : -1
+}
+
+classmate.sort(compare);
+
+/*
+0: {name: '김나라', age: 24}
+1: {name: '김천재', age: 12}
+2: {name: '반해원', age: 19}
+3: {name: '오승아', age: 15}
+4: {name: '차미나', age: 32}
+*/
+```
+
+<br>
+<br>
+
+### `filter(callback(element[, index[, array]])[, thisArg])`
+- 특정 조건에 일치하는 배열의 모든 값을 배열 형태로 반환
+  즉, 요소의 조건을 판단하는 함수로, 조건에 ture이면 요소가 남아있고 false라면 요소가 제외된다.
+- 조건에 일치하는 배열 값이 없을 경우, 빈 배열을 반환 
+- 3가지 인수를 가짐
+    - element : 배열의 현재 요소
+    - index : 배열의 현재 요소의 순번
+    - arry : 호출한 배열
+- thisArg : callback함수 실행 시, this로 사용되는 값
+- 기존 배열을 변경하는 것이 아니고, 기존 배열에 있는 요소를 뽑아낸다고 생각하자!
+
+<br>
+
+#### **filter()를 사용하는 방법**
+
+```javascript
+arry.filter(function(e){
+    return 조건;
+})
+
+// 화살표 함수 형태로 사용할 수 있다.
+arry.filter((e)=>{
+    return 조건;
+})
+
+// filter함수에서 실행되는 조건이 코드 한줄이면 생략된 형태로 사용할 수 있다.
+arry.filter(e=> 조건);
+```
+
+```javascript
+function filterCallback(e){
+    return 조건;
+}
+
+arry.filter(filterCallback);
+```
+
+<br>
+
+***[예제1-1] 글자수가 6글자 이상인 단어만 추출하기***
+
+```javascript
+let fruits = ["apple", "strawberry", "melon", "peach", "watermelon"];
+
+function filterCallback(word){
+    // 단어가 6글자 이상이면 ture이기 때문에 해당 글자를 반환하는 것이다!
+    return word.length >= 6;
+}
+
+fruits.filter(filterCallback);
+//  ['strawberry', 'watermelon'] 출력
+```
+
+<br>
+
+***[예제1-2] 예제1-1을 if문으로 풀어서 쓴 경우***
+```javascript
+let fruits = ["apple", "strawberry", "melon", "peach", "watermelon"];
+function filterCallback(word){
+    if( word.length >= 6 ) {
+        return true;
+    }
+}
+
+fruits.filter(filterCallback);
+//  ['strawberry', 'watermelon'] 출력
+```
+
+<br>
+
+***[예제2] 결혼한 사람 찾기***
+```javascript
+var people = [
+  {
+    name: "김서현",
+    age: 24,
+    married: false
+  },
+  {
+    name: "백승협",
+    age: 19,
+    married: false
+  },
+  {
+    name: "강종식",
+    age: 37,
+    married: true
+  },
+  {
+    name: "차미나",
+    age: 29,
+    married: true
+  },
+  {
+    name: "오정균",
+    age: 40,
+    married: false
+  },
+];
+
+function filterCallback(opt){
+    return opt.married;
+}
+
+people.filter(filterCallback);
+
+// 0: {name: '강종식', age: 37, married: true}
+// 1: {name: '차미나', age: 29, married: true}
+```
+
+<br>
+<br>
+
+### ` forEach(callback(currentvalue[, index [, array]])[, thisArg])`
+- 주어진 함수(callback)을 배열에 있는 각 요소에 대해 오름차순으로 한 번씩 실행
+- callback : 각 요소를 시험할 함수. 다음 세 가지 매개변수를 받음
+    - currentValue : 처리할 현재 요소
+    - index (Optional) : 처리할 현재 요소의 인덱스
+    - array (Optional) : forEach()를 호출한 배열
+- thisArg (Optional) : callback을 실행할 때 this로 사용할 값
+
+<br>
+
+#### **forEach 작성방법**
+```javascript
+arr.forEach(function(element, index){
+  console.log(element, index);
+});
+
+// 혹은 arrow(화살표) 함수 가능
+arr.forEach((element,index) => {
+  console.log(element, index)
+});
+
+// 인자값이 element 1개라면, 매개변수를 감싸고 있는 소괄호를 생략할 수 있다.
+// 실행문이 한줄이면 { } 중괄호를 생략할 수 있다.
+arr.forEach(element => console.log(element, index));
+```
+
+<br>
+
+***[예제1-1] 0~10까지 있는 배열에서 홀수로만 이루어진 배열 만들기***
+
+```javascript
+let arr = [0,1,2,3,4,5,6,7,8,9,10];
+
+// 풀이
+// 홀수만 담을 빈 배열을 생성
+let oddArr = [];
+
+//arr의 요소값을 차례대로 돌면서
+for(let i=0; i<arr.length; i++){
+    // 해당 arr의 순번값이 2로 나눴을 때 나머지가 1이면 홀수임을 의미
+    if(arr[i]%2 === 1){
+        // 그 해당 값을 oddArr라는 빈배열에 추가한다.
+        oddArr.push(arr[i]);
+    }
+}
+
+console.log(oddArr);
+// [1, 3, 5, 7, 9]
+```
+
+<br>
+
+***[예제1-2] 예제1-1번을 이번에는 forEach를 이용해서 홀수배열만 만들기***
+
+```javascript
+let arr = [0,1,2,3,4,5,6,7,8,9,10];
+
+// 풀이
+// 홀수만 담을 빈 배열을 생성
+let oddArr = [];
+
+arr.forEach((el, index)=>{
+    if(arr[index]%2 === 1){
+        oddArr.push(arr[index]);
+    }
+});
+
+console.log(oddArr);
+// [1, 3, 5, 7, 9]
+```
