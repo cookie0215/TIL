@@ -163,40 +163,62 @@ div {
 ```
 
 <br>
+<br>
 
-### **인접 형제** (바로 다음 동생) 결합자 
-- 바로 안 단계의 요소들을 선택
+### `형제tag + 다음형제tag` **인접 형제** (바로 다음 동생) 결합자 
+- **형제tag1을 기준으로 바로 다음에 위치한 형제** 요소 하나만 선택
 - `+` 기호를 사용해서 표시
-- `형제1tag + 형제2tag {css스타일 속성}`
 
 ```html
-  <div>첫줄</div>
-  <div>둘째줄</div>
-  <div class="selected">선택된 줄</div>
-  <div>넷째줄</div>
-  <div>다섯째 줄</div>
+<ul>
+  <li>수박</li>
+  <li>딸기</li>
+  <li class="orange">오렌지</div>
+  <li>망고</li>
+  <li>사과</li>
 ```
 ```css
-div {
-  padding: 12px 24px;
-  border-top: 1px solid black;
-}
-.selected {
-  border-top: 0;
-  color: white;
-  background-color: dodgerblue;
-}
 
-/* 두 형제요소에 css 지정 */
-.selected + div { border-top: 0; }
+/* 
+orange요소를 기준으로 
+orange요소와 바로 다음 형제인 망고요소의 color가 빨간색으로 바뀐다.
+*/
+.orange + li { color: red; }
 ```
 
 <br>
+<br>
 
-### **전체** 선택자
+### `형제tag ~ 형제tag` **일반형제** 선택자
+- **형제 tag1을 기준으로  다음 형제 요소들 모두**를 선택
+- `~ ` 기호를 사용해서 표시
+```html
+
+<ul>
+  <li>수박</li>
+  <li>딸기</li>
+  <li class="orange">오렌지</li>
+  <li>망고</li>
+  <li>사과</li>
+</ul>
+```
+```css
+
+/*
+orange 클래스명을 기준으로 다음 형제 요소 모두를 선택한다!
+그래서 "망고" 와 "사과"만 글자색이 빨간색으로 바뀐다!
+*/
+
+.orange li {color: "red";}
+```
+
+
+<br>
+<br>
+
+### `*` **전체** 선택자
 - 모든 태그에 적용
 - html, body를 모두 포함시켜 적용할 수도 있고, 특정 요소의 모든 자손/자식으로 지정해 적용할 수도 있다. 
-- `*`로 표시 
 
 ```html
   <section>
