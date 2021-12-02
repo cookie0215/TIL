@@ -1,6 +1,6 @@
 # git Basic
 
-##사용자등록
+## 사용자등록
 ```
 $ git config --global user.email "이메일주소"
 $ git config --global user.name "이름"
