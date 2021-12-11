@@ -58,7 +58,8 @@ if (1) { }  // true >> 숫자1을 불리언 타입으로 변환
 - 자바스크립트 엔진은 산술 연산자 표현식을 평가하기 위해 피연산자 중 숫자 타입이 아닌 피연산자를 암묵적으로 숫자타입으로 변환함
 - 비교 연산자 또는 `+` 단항 연산자도 마찬가지로 암묵적으로 숫자타입으로 변환
 
-> 단, 객체, 빈 배열이 아닌 값이 존재하는 배열, undefined 는 숫자타입으로 변환되지 않고 NaN 가 반환됨!!
+> 단, 객체, 빈 배열이 아닌 값이 존재하는 배열, undefined 는 숫자타입으로 변환되지 않고 NaN 가 반환됨!!  
+> null은 강제적으로 숫자 타입으로 변환 시, 0으로 반환된다!
 
 <br>
 
@@ -85,13 +86,28 @@ if (1) { }  // true >> 숫자1을 불리언 타입으로 변환
 + [1,2,3]     // NaN
 + (function(){})  // NaN
 ```
+→ Symbol()은 자동으로 형 변환이 발생하지 않기 때문에 err가 발생
+
+<br>
+
+```javascript
+
+1 * null    // 0
+1 * ''      // 0
+1 / null      // Infinity
+1 / ''     // Infinity
+'' / 1       // 0
+
+1 + true     // 2   >> true가 1로 변환되면서 연산이 된다.
+```
+
 <br>
 <br>
 
 ### 암묵적 3) 불리언 타입으로 변환
 - 자바스크립트 엔진은 불리언 타입이 아닌 값들을 Truthy 값(참으로 인식할 값) 또는 Falsy 값(거짓으로 인식할 값)으로 구분
 
-> **< false로 평가되는 Falsy 값 >**  
+> **< false로 변환되는 Falsy 값들 >**  
 > - false  
 > - undefined  
 > - null  
@@ -152,7 +168,10 @@ console.log(isTruthy([]));
 console.log(String(100));        // "100"
 console.log(String(NaN));       // "NaN" 
 console.log(String(true));     // "true" 
+console.log(typeof String(Symbol()));  //string 반환
 ```
+→ 사실 Symbol()는 자바스크립트 엔진에 의해 암묵적으로 문자열로 자동 형 변환되지 않지만, 개발자가 의도적으로 형변환은 시킬 수 있다!
+
 <br>
 
 - `Object.prototype.toString` 메소드를 사용하는 방법
@@ -236,7 +255,8 @@ console.log(Boolean([]));        // true
 - ! 부정 논리 연산자를 **두번** 사용하는 방법
 ```javascript
 console.log(!!'');        // false
-console.log(!!'false');   // true
+console.log(!!'false');   // true >> 'false'은 불리언형이 아닌 문자열 글자임을 유의하자!
+console.log(!!false);    // false
 ```
 <br>
 <br>
@@ -265,9 +285,25 @@ false && 'Dog'
 
 'Cat' || 'Dog'
 // 'Cat' 반환 >>> OR연산자는 이미 첫번째 피연산자가 true로 결정되었기 때문에 두번째 피연산자를 더이상 평가할 필요가 없다. (논리 연산의 결과를 cat이 결정하였기 때문에 cat이 반환되는 것이다!)
+
+undefined || 0   // 0 반환
 ```
 
 <br>
+
+***[예제1] 변수 a에 값이 null 또는 undefined가 들어 있는 상태에서 객체의 key값 형태로 접근을 하면 에러가 발생되는 것을 볼 수 있다.***
+
+```javascript
+var a = undefined;
+var vlaue = a.value;
+// TypeError: Cannot read properties of undefined (reading 'value')
+```
+```javascript
+var b = null;
+var vlaue = b.value;
+// TypeError: Cannot read properties of null (reading 'value')
+```
+
 <br>
 <br>
 
@@ -275,6 +311,25 @@ false && 'Dog'
 - ES11에 도입된 연산자
 - `?.` 을 사용하면 프로퍼티가 없는 **중첩 객체를 에러 없이 안전하게 접근** 할 수 있다.
 - 옵셔널 체이닝은 반드시 해당 변수가 선언되어 있는 상태여야 한다!
+- 해당 값이 객체 데이터인 상태에서 확인이 가능하다!
+
+<br>
+
+***[예제2] 위의 예제 1에서 null 또는 undefined가 할당된 값에 객체의 key값을 접근하면 에러가 출력되는데, 이때 옵셔널 체이닝을 활용하면 undefined가 반환되는 것을 볼 수 있다.***
+
+```javascript
+var a = null;
+var value = a.value;
+
+console.log(value);
+// Uncaught TypeError: Cannot read properties of null (reading 'value')
+
+// 옵셔널 체이닝 활용
+var b = null;
+var value = b?.value;
+// undefined
+```
+→ 옵셔널 체이닝을 활용하면 null 또는 undefined값이 할당되어도 undefined가 반환 된다!
 
 <br>
 
@@ -305,3 +360,66 @@ console.log(user.address.street);
 
 ### null 병합 연산자 `??`
 - ES11에 도입된 연산자
+-  여러 피연산자 중 값이 확정되어 있는 변수를 쉽게 찾을 수 있도록 도와주는 연산자
+- `??`로 비교하는 2개의 피연산자 중 하나가 **null 또는 undefined 가 있다면  
+  null, undefined가 아닌 다른 피연산자를 반환**한다!  
+→ 즉, 변수 a와 b를 비교 시, 변수 a값에 null 또는 undefined값이 할당되어 있다면 b를 반환하고, null 또는 undefined값이 없다면 첫번째 피연산자인 a를 반환한다!
+- **괄호 없이 ??를 ||나 &&와 함께 사용하는 것은 금지**되어 있다.
+
+<br>
+
+>  `||` (OR연산자)와 `??` (null병합연산자)는 비슷하지만, 차이가 있다.  
+> - `||`는 첫 번째 피연산자가 true면 첫번째 피연산자 값을 반환함  
+> - `??`는 첫 번째 정의된(defined) 값을 반환함
+
+<br>
+
+***[예제1-1] OR 연산자를 이용해 평가된 결과값을 반환하기***
+
+```javascript
+let abc = 0;
+
+console.log(abc || "123");  // "123"
+```
+→ "123"이 출력되는데, 변수 abc의 값이 0이므로 false값이 된다. 그리고 OR 연산자는 둘 중 하나만 true라면, 바로 그 평가된 값을 반환하기 때문에 위의 예제에서 true값인 "123"을 반환하는 것이다!
+
+<br>
+
+***[예제1-2] null 병합 연산자를 이용해 평가된 결과값을 반환하고 "예제1-1"과 차이점을 확인해보자***
+
+```javascript
+let abc = 0;
+
+console.log(abc ?? "123");    // 0
+```
+→ 0 이 출력된다. 왜냐하면 null 병함 연산자(`??`)는 변수값에 null또는 undefined가 있을 때 값이 확정되어 있는 변수의 할당된 값을 반환한다.  
+그래서 [예제1-2]의 변수 abc에 0 이라는 값이 할당되어져 있다고 보기 때문에 0 값을 반환하는 것이다!  
+참고로 아래 예제에서 null 병합 연산자는 '' (빈문자열)도 마찬가기로 할당된(정의된) 값이 있다고 보는 것이다!
+
+<br>
+
+```javascript
+var foo =  'string value' ?? undefined;
+
+console.log(foo);
+// string value
+```
+<br>
+
+```javascript
+var foo =  'string value' ?? '';
+console.log(foo)
+// string value
+
+var foo =  '' ?? 'string value';
+console.log(foo);
+// '' >>> 빈 문자열은 null , undefined와 달리 좌항에 적힌 값 그대로 반환 한다
+
+let a = null;
+let b = undefined;
+let c = "hello";
+let d = "world";
+
+console.log(a ?? b ?? c ?? d);
+// "hello"  >>> null이나 undefined가 아닌 첫 번째 피연산자를 반환!
+```

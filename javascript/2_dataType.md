@@ -104,14 +104,18 @@ console.log(0 === false); // false (데이터 타입이 다르기 때문에..)
 <br>
 
 ## Undefined
-- 보통 var키워드로 변수를 선언만 했을 때 undefined 값이 할당됨
+- 변수를 키워드로 선언 후, 아직 값을 할당하지 않은 상태  
+→ 보통 var키워드로 변수를 선언만 했을 때 undefined 값이 할당됨
+- **자료형이 결정되지 않은 상태**이기 때문에 데이터 타입은 undefined가 반환되는 것이다!
 
 <br>
 
 ## Null 
-- 값을 의도적으로 비어 있는 값으로 만들고 싶을 때 사용
+- 값을 의도적으로 비어 있는 값으로 만들고 싶을 때 사용  
+→ 변수를 키워드로 선언 후, null 이라는 값을 의도적으로 할당한 것!
 - document.querySelector 메서드는 조건에 맞는 html요소를 검색할 수 없을 때,  
   에러 대신 `null` 값을 반환한다.
+- null의 데이터 타입은 **object를 반환**한다!!!
 
 ```html
 <body>
@@ -124,6 +128,18 @@ console.log(0 === false); // false (데이터 타입이 다르기 때문에..)
   </script>
 </body>
 ```
+<br>
+
+***[알아두기] null과 undefined는 `==` (동등 연산자)로 비교 시, 특별한 규칙에 의해 true를 반환 한다***
+```javascript
+console.log(null == undefined);  // true
+
+console.log(null == 0);         // false
+console.log(undefined == 0);    // false
+````
+→ 둘을 서로 비교하면 특별한 규칙에 의해 암묵적으로 강제 형 변환이 발생해 true를 반환하게 된다.  
+하지만 각각 다른 자료형과 동등 연산자로 비교를 시키면 강제 형 변환이 발생하지 않는다는 점을 유의하자!!!
+
 <br>
 <br>
 
