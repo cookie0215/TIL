@@ -1,0 +1,93 @@
+# [TIL] Vue3_템플릿 문법
+
+
+### 템플릿문법이란?
+- Vue의 Template (템플릿) : Html, Css 의 마크업 속성과 **vue 인스턴스에서 정의한 데이터 및 로직들을 연결해 브라우저 화면에서 볼 수 있도록 html로 변환해주는 것**을 말한다.  
+- Template Syntax (템플릿 문법) : vue로 화면을 조작하는 방법이고, 템플릿 문법은 크게 **데이터 바인딩**과 **디렉티브**로 구분한다.
+
+<br>
+
+## 1. **데이터 바인딩**
+- vue 인스턴스에서 정의한 속성들을 화면에 표시하는 방법
+- 가장 기본 형태 : 콧수염 형태로 이루어진 Mustache (이중 괄호 구문)을 사용한 문자열 보간법(text interpolation)이다.  
+  → ex) `<h1>{{ msg }}</h1>`
+
+<br>
+
+## 2. **디렉티브**
+- vue의 화면 요소를 더 쉽게 조작하도록 사용하는 문법으로, html 태그의 속성에 콧수염 형태인 Mustache (이중 괄호 구문)을 사용할 수 없기 때문에 html태그 속성에 작성할 때는 `v-`인 **디렉티브** 형태를 사용해야 한다.
+
+<br>
+
+### `v-bind`
+
+<br>
+
+> < 작성 방법 >  
+> `v-bind:속성명=""` 또는  
+> `:속성명=""` 축약해서 으로 작성
+
+<br>
+
+- html 태그가 갖고 있는 기본 속성과 **vue의 data 속성을 연결할 때 사용**하는 디렉티브
+
+<br>
+<br>
+
+
+### `v-on`
+
+<br>
+
+> < 작성 방법 >  
+> `v-on:이벤트=""` 또는  
+> `@이벤트=""` 축약해서 으로 작성
+
+<br>
+
+- 화면 요소의 이벤트를 감지하고 동작시킬 때 사용
+
+<br>
+<br>
+
+***동적 전달인자***  
+위의 각 디렉티브의 전달인자를 작성할 때 vue의 data속성 부분에 전달할 속성을 작성하고 그 data를 html속성부분으로 가져와 대괄호로 묶어서 작성할 수도 있다.  
+
+<br>
+
+```javascript
+// App.vue
+
+<template>
+  <h1
+    v-bind:[attr]="className"
+    @[event]="addBang('bye')">
+      {{msg}}
+  </h1>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      msg: 'Hello Vue~',
+      className: 'active',
+      attr: 'class',
+      event: 'click'
+    }
+  },
+  methods: {
+    addBang(ment) {
+      this.msg += ment + '!';
+    }
+  }
+}
+</script>
+```
+![결과 화면](https://user-images.githubusercontent.com/81572770/147817775-24691cd5-5bdc-4d53-951e-65936de506b8.JPG)
+
+→ h1태그에 class명을 active라고 지정해주기 위해  
+  `v-bind:class="className"` 이렇게 작성했었는데  
+  이걸 `v-bind:[attr]="className"` 동적 전달인자형태로 작성했다.  
+
+  그래서 `[attr]` 은 data속성에서 `class`라는 문자를 가져와 넣고, 속성값으로 `className` 이라고 작성해서 `active` 문자를 전달해 원하는대로 동작하고 있는 것을 볼 수 있다!
