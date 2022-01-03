@@ -1,0 +1,12 @@
+$color--tomato: tomato;
+$color--black: #232323;
+
+body {
+  background: $color--black;
+  
+  h1 {
+    color: $color--tomato;
+    font-size: 40px;
+    display: flex;
+  }
+}
