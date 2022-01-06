@@ -1,4 +1,4 @@
-# [TLI] JS와 React 비교하기
+# [TIL] JS와 React 비교하기
 vanilla js로 만든 것과 react로 만든 것의 코드 비교해보기
 
 <br />

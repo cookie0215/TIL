@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fragment</title>
+
+  <!-- react CDN연결 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel CDN연결 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+const Lists = () => {
+  return (
+    <ul>
+      <ListItem />
+    </ul>
+  );
+}
+
+const ListItem = () => {
+  return (
+    <React.Fragment>
+      <li>목록1</li>
+      <li>목록2</li>
+    </React.Fragment>
+  );
+}
+
+  // 사용 방법
+ReactDOM.render(
+  <Lists />,
+  document.getElementById('root')
+)
+</script>
+</html>
