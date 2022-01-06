@@ -33,6 +33,6 @@ import React from 'react';
 
 <br />
 
-[1. 리액트 시작하기 전 & React.createElement()]()  
-[2. React Component]()  
+[1. 리액트 시작하기 전 & React.createElement()](https://github.com/cookie0215/TIL/blob/main/react/0_js_react/react%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%20%EC%A0%84.md)  
+[2. React Component](https://github.com/cookie0215/TIL/blob/main/react/1_reactComponent/react_component.md)  
 [3. JSX]()
