@@ -12,6 +12,7 @@
 >    실행문; 
 > }
 > ```
+
 <br>
 
 ***[예제1] 1~20까지 숫자 중 빈배열에 반복문을 활용해 각각 짝수배열, 홀수 배열 만들기*** 
@@ -29,11 +30,12 @@ for(let num=1; num<=20; num++){
 }
 console.log(oddArr);
 console.log(evenArr);
+
 ```
 
 <br>
 
-***[예제2] <li>를 스크립트로 생성하여 아래 배열들을 각각 <ul>, <ol> 태그에 넣기*** 
+***[예제2] `<li>`를 스크립트로 생성하여 아래 배열들을 각각 `<ul>`, `<ol>` 태그에 넣기*** 
 
 ```html
 <ul></ul>
@@ -98,6 +100,25 @@ for(let j=0; j<steps.length; j++){
 > }
 > ```
 
+<br />
+
+***[연습1] 객체 데이터에 for in문을 사용해 key-value형태로 출력하기***
+
+```javascript
+const person = {
+  name: "cookie Kim",
+  age: 20,
+  married: false
+}
+
+for(let key in person) {
+  console.log(`${key} , ${person[key]}`);
+}
+
+// name , cookie Kim
+// age , 20
+// married , false
+```
 
 <br />
 <br />
