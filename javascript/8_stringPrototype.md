@@ -7,7 +7,23 @@
 var myString = "자바스크립트";
 
 console.log(myString.length);  // 6
+console.log(myString[1])    // 바
 ```
+
+<br>
+
+> 🖐잠깐!
+>
+> 문자열(string)도 **유사 배열 객체**이기 때문에     
+> length 프로퍼티를 사용할 수 있고,  
+> 또한 for문으로 순회할 수도 있다!  
+> 단, string은 원시 값이기도 해서 `myString[1] = '헐'` 이렇게 일부 문자를 변경해도 반영되지 않는다.
+> <br />
+> <br />
+> ***유사배열 객체***  
+> *: 마치 배열처럼 인덱스로 프로퍼티 값에 접근할 수 있고,*    
+> *length 프로퍼티를 갖는 객체를 말한다.*
+
 
 <br>
 <br>
