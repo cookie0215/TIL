@@ -59,8 +59,15 @@ const element = (
 ```
 <br />
 
-- JSX는 HTML보다는 JavaScript에 가깝기 때문에, React DOM에서 HTML Attribute(속성) 이름 대신 camelCase 프로퍼티 명명 규칙을 사용한다.   
-  예를 들어, JSX에서 class는 **className**가 되고 tabindex는 **tabIndex**가 되는 것이다! 
+- JSX는 HTML보다는 JavaScript에 가깝기 때문에, React DOM에서 HTML Attribute(속성) 이름 대신 camelCase 프로퍼티 명명 규칙을 사용한다.
+<br />
+
+  javscript     |     JSX
+  |:-----------:|:----------------:|
+  class         |  **className**
+  tabindex      |  **tabIndex**   
+  lable for     |  **lable htmlFor**
+
 - 반드시 태그를 닫은 상태로 작성해야 한다!    
   ex) `<br />` , `<input />` , `<span></span>`  
 

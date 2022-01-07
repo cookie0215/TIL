@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Handling</title>
+
+  <!-- react CDN연결 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel CDN연결 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+  let i = 0;
+
+  class App extends React.Component {
+    state = { list: [] };
+
+    render() {
+      return (
+        <div 
+          id="list"
+          style={{heigth: 100, overflow: 'scroll'}}
+        >
+        {this.state.list.map(i => {
+          return <div>{i}</div>;
+        })}
+        </div>
+      )
+    }
+
+    componentDidMount() {
+      setInterval(() => {
+        this.setState((state)=>({ list: [...state.list, i++] }))
+      }, 1000);
+    }
+
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+      // 이전list의 갯수와 새로 변경된list의 갯수 차이가 없으면 Snapshot을 저장할 필요가 없다는 의미
+      if(prevState.list.length === this.state.list.length) return null;
+
+      const list = document.querySelector("#list");
+      // list.length의 차이가 있다면 스크롤 높이값과 스크롤 상단값을 뺀 결과값이 발생한다.
+      return list.scrollHeight - list.scrollTop;
+    }
+
+    // getSnapshotBeforeUpdate에서 구해진 Snapshot값이 componentDidUpdate 의 3번째 인자로 들어갈 것이다.
+    // length가 같으면 null값이 들어가고, 다르다면 그 차이 값이 들어간다.
+    componentDidUpdate(prevProps, prevState, snapshot) {
+      console.log(snapshot);
+
+      if(snapshot === null) return;
+    }
+  }
+
+  ReactDOM.render(
+    <App />,
+    document.querySelector("#root")
+  );
+</script>
+</html>
