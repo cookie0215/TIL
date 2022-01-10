@@ -35,10 +35,17 @@ import React from 'react';
 
 [0. 리액트 시작하기 전 & React.createElement()](https://github.com/cookie0215/TIL/blob/main/react/0_js_react/react%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0%20%EC%A0%84.md)  
 [1. React Component](https://github.com/cookie0215/TIL/blob/main/react/1_reactComponent/react_component.md)    
+
 [2-1. JSX](https://github.com/cookie0215/TIL/blob/main/react/2_jsx/jsx.md)  
 [2-2. Fragment](https://github.com/cookie0215/TIL/blob/main/react/2_jsx/fragment.md)  
+
 [3-1. Props](https://github.com/cookie0215/TIL/blob/main/react/3_props_state/props.md)  
 [3-2. State](https://github.com/cookie0215/TIL/blob/main/react/3_props_state/state.md)   
-[4. event Handling](https://github.com/cookie0215/TIL/blob/main/react/4_eventHandling/event.md)   
-[5. lifecycle](https://github.com/cookie0215/TIL/blob/main/react/5_lifecycle/lifecycle.md)   
+
+[4. Event Handling](https://github.com/cookie0215/TIL/blob/main/react/4_eventHandling/event.md)   
+[5. Lifecycle](https://github.com/cookie0215/TIL/blob/main/react/5_lifecycle/lifecycle.md)    
+[6. Router(v6)](https://github.com/cookie0215/TIL/blob/main/react/6_router/router.md)   
+[7. ]()   
+[8. ]()   
+[8. ]()   
 
