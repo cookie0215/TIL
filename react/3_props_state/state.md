@@ -5,8 +5,12 @@
 ### State
 - 컴포넌트 **내부에서 가지고 있는 컴포넌트의 상태값**으로,  
   동적 데이터를 다룰 때 사용한다.   
+  (외부에서 값을 전달 받는 게 아니라 직접 컴포넌트내에서 state 관리하고 싶을 때 사용할 수 있다.)
 - state,props 둘 다 변경되면 렌더링이 다시 진행된다.
 - **state 객체** : 화면에 보여줄 컴포넌트의 정보(상태)를 지니고 있는 객체
+- 각 컴포넌트안에 state가 있을 때 독립적으로 상태를 관리할 수 있다.
+- setState에서 현재 state와 상태를 동일 시 하면 상태를 아무리 변경해도 실행이 무시된다.
+- state가 업데이트될 때 비동기적으로 처리될 수 있다.   
 
 <br />
 
@@ -16,13 +20,19 @@
 > 함수 형태의 컴포넌트가 아닌 **클래스 형태의 컴포넌트**를 통해서    
 > constructor 안에 this.state를 작성해서 사용했다.   
 >
-> *→ 함수 컴포넌트는 this값을 가질 수 없기 때문에 리액트 개발할 때 함수컴포넌트를 사용하다가*   
-> *상태관리를 할때는 다시 클래스컴포넌트로 바꿔서 작성해야 하는 번거로움이 있었음!*
+><br />
+>
+> <class 컴포넌트에서 state사용의 문제점>   
+>  - 컴포넌트 사이에서 상태와 관련된 로직을 재사용하기 어려움
+>  - class는 사람과 기계를 혼동시키기 때문에 컴파일 단계에서 코드를 최적화하기 어렵게 만든다.
+> - 함수 컴포넌트는 this값을 가질 수 없기 때문에 리액트 개발할 때 함수컴포넌트를 사용하다가    
+> 상태관리를 할때는 다시 클래스컴포넌트로 바꿔서 작성해야 하는 번거로움이 있었음!    
 
 <br />
 
 → 즉, 클래스형 컴포넌트가 가지고 있는 state 와  
   함수형 컴포넌트가 useState라는 함수로 사용하는 state 이렇게 2가지가 있다.
+  (리액트 v16.8부터 Hook을 주로 사용하기 때문에 거의 class컴포넌트를 잘 사용하지 않는다...!)
 
 <br />
 <br />
@@ -33,7 +43,8 @@
 
 **<state 정의할 때>**  
 - class 컴포넌트에서는 `constructor()` 메서드를 작성 설정
-- 함수 컴포넌트에서는 `useState()`라는 함수로 작성해서 state를 관리한다.
+- 함수 컴포넌트에서는 `useState()`라는 함수로 작성해서 state를 관리한다.    
+  (`useState()`의 인자를 값 대신 **함수로 전달**하면 상태를 초기화할때 한번만 실행할 수 있다!!!)
 
 <br />
 
@@ -120,7 +131,9 @@ class 컴포넌트이름 extends Component{
 
 ### 2. 함수 컴포넌트에서 state 정의 및 사용 방법
 - 함수 컴포넌트에서는 `useState()`라는 함수로 작성해서 state를 관리
-  
+
+<br />
+
   > 💛잠깐!  
   > 
   > cdn을 통해 리액트를 사용할 때는 `React.useState()` 로 정의하면 되고,  
@@ -128,7 +141,8 @@ class 컴포넌트이름 extends Component{
  
 <br />
 
-- `const [배열아이템1, 배열아이템2] = useState('초기값');` 이렇게 구조분해할당으로 `useState()`을 사용한다.
+- `const [배열아이템1, 배열아이템2] = useState('초기값');` 이렇게 구조분해할당으로 `useState()`을 사용한다.   
+  (여기서 초기값을 값 대신, 함수로 전달할 수 있다.)
 
   > 🤔 **왜 구조분해할당으로 사용하는 걸까..?**
   > 
@@ -169,4 +183,56 @@ const 컴포넌트이름 = () => {
 
 ...(중략)...
 
+```
+
+<br />
+<br />
+
+## state 끌어 올리기
+
+> 끌어올리기란?   
+>
+> 끌어올린다는게 자식 컴포넌트에서 개별적으로 선언된 상태의 메모리주소를 각 자식 컴포넌트에서 관리하는게 아니라    
+> 부모컴퍼넌트인 App에 선언한 상태의 메모리 주소를 자식컴포넌트인 Counter에서 공유하는 개념이다.   
+>
+> → 즉, App(부모)의 '자식' 컴포넌트에서 상태가 선언되어 있어서 이를 '부모' 컴포넌트인 App으로 상태 선언 위치를 변경하기 때문에 사용한 표현이다.
+
+- 기존에 구현했던 상태에서 동일한 상태를 구현해야할 때 주로 사용한다.
+
+<br />
+
+```javascript
+// App.js (부모)
+
+import "./styles.css";
+import { Counter } from "./Counter";
+import { useState } from "react";
+
+export default function App() {
+  const [count, setCount] = useState(0);
+  const props = {
+    count,
+    increase: 20,
+    handlerClick: setCount
+  };
+
+  return (
+    <div className="App">
+      <h1>State 끌어올리기 실습</h1>
+      <Counter count={count} increase={1} handlerClick={setCount} />
+      <Counter count={count} increase={2} handlerClick={setCount} />
+      <Counter {...props} />
+    </div>
+  );
+}
+
+```
+```jsx
+// Counter.jsx (자식 컴포넌트)
+
+export const Counter = ({ count, increase, handlerClick }) => {
+  return (
+    <button onClick={() => handlerClick(count + increase)}>{count}</button>
+  );
+};
 ```

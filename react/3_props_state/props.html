@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
   <!-- Babel CDN연결 -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
   <div id="root"></div>
 </body>
@@ -34,7 +36,7 @@
     message: '함수,class 컴포넌트 모두 사용가능한 기본값',
   }
   */
-  
+
   // class 컴포넌트
   // class 컴포넌트에서 props를 전달 받을 땐 this.props로 작성해야 한다!
   class Component extends React.Component {
@@ -56,4 +58,5 @@
     document.querySelector("#root")
   );
 </script>
+
 </html>

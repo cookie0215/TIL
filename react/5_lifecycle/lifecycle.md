@@ -122,8 +122,8 @@ Const LifeCycle =() => {
 
 ### Unmount
 
- `ComponentWillUnMount`
-- DOM에서 컴포넌트가 지워지기 직전에 실행되는 메서드
+ `componentWillUnMount`
+- **DOM에서 컴포넌트가 지워지기 직전에 실행**되는 메서드
 - 컴포넌트와 관련된것들을 정리하는데 사용한다.   
   ex) 로그아웃시 주 구성 Component를 해제하기 전에 사용자 세부정보와 모든 인증 토큰을 지운다거나 setInterval을 clear한다거나 할 수 있다.
 
