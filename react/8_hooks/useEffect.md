@@ -2,6 +2,8 @@
 useEffect는 라이프 사이클 혹 중 `componentDidMount()`,`componentDidUpdate`, `ComponentWillUnMount` 이 3개를 대체해서 사용할 수 있다.    
 (대체해서 사용할 순 있지만, 저 3개의 훅과 useEffect가 완전 동일한 기능을 하는 것은 아니다!)
 
+→ 즉, useEffect는 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook   
+
 <br />
 <br />
 
@@ -27,11 +29,12 @@ useEffect(() => {
 - 두번째 파라미터를 빈배열로만 작성하면   
   첫번째 렌더링된 직후에만 useEffect안의 실행문이 실행된다.
 
-- 두번째 파라미터 배열에 특정 값을 넣게 된다면, 컴포넌트가 처음 마운트 될 때에도 호출이 되고, 지정한 값이 바뀔 때에도 호출된다.
+- 두번째 파라미터 배열에 특정 값을 넣게 된다면, 컴포넌트가 처음 마운트 될 때에도 호출이 되고, 특정 값이 업데이트 될 때에도 호출된다.
 
 <br />
 
-### `ComponentWillUnMount` 기능을 대체해서 사용할 때
+### `ComponentWillUnMount` 대체해서 사용할 때 & 업데이트 되기 직전에 사용
+- useEffect안에 return문을 작성해서 cleanup함수를 반환함
 
 ```jsx
 useEffect(() => {
@@ -48,5 +51,10 @@ useEffect(() => {
 
 <br />
 
-- 위에 작성한 내용은 mount될때의 상황이고, useEffect안에 **return문을 작성하는 것은 unMount될때의 상황에서 반환**된다.
-  → 즉, 첫번째 렌더링 상황에서는 return문이 반환되지 않고, 그 다음에 렌더링되기 직전에 해당 retuen문이 반환된다!
+- 두번째 파라미터를 빈배열로만 작성하고,   
+  useEffect안에 **return문을 작성하면 unMount될 때 cleanup함수가 반환**된다.
+
+- 두번째 파라미터 배열에 특정 값을 넣으면,   
+  **특정값이 업데이트 되기 직전에 cleanup 함수를 반환**한다.
+
+→ 첫번째 렌더링 상황에서는 return문이 반환되지 않고, 그 다음에 렌더링되기 직전에 해당 retuen문이 먼저 반환된 후, return문 밖에 있는 실행문이 출력된다.!

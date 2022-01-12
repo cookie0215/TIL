@@ -5,7 +5,7 @@ import FunctionExample from './components/FunctionExample';
 function App() {
   return (
     <div className="App">
-      {/* <ClassExample /> */}
+      <ClassExample />
       <FunctionExample />
     </div>
   );
