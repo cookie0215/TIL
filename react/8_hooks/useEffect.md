@@ -2,7 +2,8 @@
 useEffect는 라이프 사이클 혹 중 `componentDidMount()`,`componentDidUpdate`, `ComponentWillUnMount` 이 3개를 대체해서 사용할 수 있다.    
 (대체해서 사용할 순 있지만, 저 3개의 훅과 useEffect가 완전 동일한 기능을 하는 것은 아니다!)
 
-→ 즉, useEffect는 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook   
+→ 즉, useEffect는 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook으로,   
+  매번 렌더링 될때마다 또는 맨처음에만 렌더링 될 수 있도록 하고 싶을 때 ..등 useEffect를 사용할 수 있다.
 
 <br />
 <br />
@@ -31,6 +32,112 @@ useEffect(() => {
 
 - 두번째 파라미터 배열에 특정 값을 넣게 된다면, 컴포넌트가 처음 마운트 될 때에도 호출이 되고, 특정 값이 업데이트 될 때에도 호출된다.
 
+<br />
+
+***[연습1] 클릭할 때마다 run all the time이, 렌더링이 맨처음에만될 때 run only once가 console에 출력되도록 만들기***
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function App() {
+  const [conuter, setCounter] = useState(0);
+  const click = () => {
+    setCounter((prev) => { return prev + 1 })
+  }
+
+  // 맨 처음 렌더링될 때 + 클릭할 때마다 렌더링될 때 발생
+  console.log('run all the time');
+
+  // 맨처음에만 렌더링될 때 발생
+  useEffect(() => {
+    console.log('run only once');
+  }, [])
+
+  return (
+    <div className="App">
+      <h1>{conuter}</h1>
+      <button onClick={click}>click me!</button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+![image](https://user-images.githubusercontent.com/81572770/149291658-474ad594-23e0-4da5-b6ab-27d6aaceb590.png)
+
+→ `console.log('run all the time');`은 당연히 맨처음에 페이지가 로드되거나, state 가 변경될 때마다 렌더링 되도록 만들었고,    
+
+`useEffect()`부분의 `console.log('run only once');`은 현재 두번째 파라미터값이 빈배열로 받고 있기 때문에   
+페이지가 맨처음 로드되었을 때만 안에 있는 console문이 실행되기 때문에   
+console창에 1번만 출력되고 있는 것이다.
+
+<br />
+
+***[연습2] 연습1번의 click 상황에 keword상황을 추가하고 각각 state가 변경될 때 각 이벤트상황만 렌더링될 수 있도록 만들기***
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function Practice() {
+  const [conuter, setCounter] = useState(0);
+  const [keyword, setKeyword] = useState('');
+
+  const click = () => {
+    setCounter((prev) => { return prev + 1 })
+  }
+  const onChange = (e) => {
+    setKeyword(e.target.value);
+  }
+
+  console.log('run all the time');
+
+  useEffect(() => {
+    console.log('click run only once');
+  }, [])
+
+  // input에 keyword(입력창에 값이 입력될 때) keyword 부분만 실행시켜준다.
+  useEffect(() => {
+    console.log('Search for', keyword);
+  }, [keyword])
+
+
+  return (
+    <div className="App">
+      <h1>{conuter}</h1>
+      <button onClick={click}>click me!</button>
+
+      <br />
+
+      <input
+        onChange={onChange}
+        type='text'
+        placeholder='Search here...' />
+    </div>
+  );
+}
+
+export default Practice;
+
+```
+→ `console.log('Search for', keyword);`을 useEffect를 사용하지 않고 전역으로 작성했다면,    
+input창에 값을 입력할때도 렌더링되고 count의 click버튼을 눌렀을때에도 렌더링 되어 console창에 계속 실행문이 출력되는 것을 볼 수 있다.
+
+input창의 값이 변할때만 `console.log('Search for', keyword);` 출력될 수 있도록 만들기 위해 useEffect를 사용해야 한다.    
+
+이때 두번째 파라미터를 빈배열로만 두면 맨처음 렌더링될때만 실행되기 때문에   
+state 값을 작성해줘야 한다!!
+
+<br />
+
+***[연습3] 연습2번문제의 'Search for'실행문이 맨처음 렌더링될 때는 출력되지 않도록 만들기***
+
+```jsx
+
+```
+
+<br />
 <br />
 
 ### `ComponentWillUnMount` 대체해서 사용할 때 & 업데이트 되기 직전에 사용

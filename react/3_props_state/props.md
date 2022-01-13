@@ -257,6 +257,12 @@ ReactDOM.render(
     > 
     > npm 설치    
     > `npm i prop-types`
+    > <br />  
+    > → *참고로 prop-types 설치 시, npm audit fix 명령어가 보이는데*  
+    > *되도록 이건 설치하지 말자...!*   
+    > *왜냐하면 npm v6이후에 나온 기능으로 모듈의 취약점을 검사해주지만, **잘 동작하던 프로젝트가 정상적으로 동작하지 않을 수 있다는 문제점**이 있기 때문이다!*
+
+<br />
 
 2. `import PropTypes from 'prop-types';`   
   npm으로 설치 시, 설치한 prop-types 를 프로젝트 파일에 가져온다.

@@ -15,6 +15,9 @@ prop를 이용해서 컴포넌트간에 데이터를 전달할 때
 
 - 공통 부모 컴포넌트에 Context의 `Provider`를 사용하여 **데이터를 제공**
 - 데이터를 사용하려는 컴포넌트에서 Context의 `Consumer`를 사용하여 **실제로 데이터를 사용**
+- context로 state끌어올리기가 가능하다.
+- context의 데이터가 바뀌면 context를 참조하고 있는(Consumer) 모든 컴포넌트가 리렌더링되기 때문에   
+  자주 변하는 컴포넌트에는 사용하지 않는게 좋다.
 
 <br />
 
@@ -40,7 +43,9 @@ prop를 이용해서 컴포넌트간에 데이터를 전달할 때
 ### 데이터를 set 하기
 
 1. `createContext`라는 함수를 사용해 context를 생성한다.   
-  ( React Context는 전역 데이터를 담고 있는 하나의 저장 공간으로 생각한다.)
+  ( React Context는 전역 데이터를 담고 있는 하나의 저장 공간으로 생각한다.)    
+
+  *createContext의 첫번째 인자로 기본값을 전달할 수 있다.*
 
     ```javascript
       import { createContext } from "react";
