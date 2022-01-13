@@ -19,7 +19,16 @@ React를 연결할 때 핵심 모듈이 되는 것이 2가지가 있다.
 
 <br />
 
-### 2. import로 연결
+### 2. npm에서 CRA 설치 후 import로 연결  
+
+2-1. 터미널에 `npx create-react-app 생성할폴더명` 입력해서 CRA설치   
+
+2-2. `cd 폴더명` : 만든 폴더명으로 이동   
+
+2-3. `npm start`   
+: react를 사용할 수 있도록 기본 세팅된 프로젝트가 설치된다.
+
+2-4. 설치한 프로젝트폴더에 index.js 아래 코드들이 import되어 있는 것을 확인할 수 있다!
 
 ```javascript
 import ReactDOM from 'react-dom'; 
@@ -52,5 +61,7 @@ import React from 'react';
   - [8-3) customHook](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/customHook.md)   
   - [8-4) additionalHook](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/additionalHook.md)   
 
-[9. context]()   
+[9. context](https://github.com/cookie0215/TIL/blob/main/react/9_component/context.md)    
+[]()   
+[]()   
 
