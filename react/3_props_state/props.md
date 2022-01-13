@@ -233,4 +233,95 @@ ReactDOM.render(
   props 전달이 길어지면 추적이 어려워 진다는 단점이 있다.   
   이것을 props drilling 이라고 한다.
 
+<br />
+<br />
 
+## propTypes
+*[propTypes 공식문서](https://ko.reactjs.org/docs/typechecking-with-proptypes.html)*
+
+- 부모로부터 전달받은 prop의 데이터 type을 검사하기 위해 사용   
+  → 자식 컴포넌트에서 명시해 놓은 데이터 타입과 부모로부터 넘겨 받은 데이터 타입이 일치하지 않으면 콘솔에 에러 출력
+
+- propTypes 작성 시, 대소문자 꼭 확인하기!!
+
+- 참고) 개발모드에서 작동한다!
+
+<br />
+
+### propTypes 사용방법
+
+1. propTypes을 CDN연결 또는 npm에서 설치한다.
+
+    > CDN 연결   
+    > `<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>`
+    > 
+    > npm 설치    
+    > `npm i prop-types`
+
+2. `import PropTypes from 'prop-types';`   
+  npm으로 설치 시, 설치한 prop-types 를 프로젝트 파일에 가져온다.
+
+<br />
+
+3. props를 통해 가져온 name의 데이터 타입을 string으로 지정해준다. 
+
+    ```jsx
+    import PropTypes from 'prop-types';
+
+    export default function Component = ({ name }) => {
+      return (
+        <h1>Hello, {name}</h1>
+      );
+    }
+
+    // name의 데이터 타입을 string으로 지정 
+    Component.propTypes = {
+      name: PropTypes.string
+    };
+
+    ReactDOM.render(
+      <Component name={'Welcome'} />,
+      document.querySelector("#root")
+    );
+    ```
+    → 여기 Component안에 name의 props를 `name={'Welcome'}` 이렇게 작성하면 타입에러 없이 잘 동작하는 것을 볼 수 있다.
+
+    하지만 `name={20}` 이렇게 문자열대신 다른 타입들을 작성하면    
+    *`"type: Invalid prop `name` of type `number` supplied to `Component`, expected `string`."`* 이라는 에러 메세지가 출력되는 것을 볼 수 있다.
+
+<br />
+<br />
+
+### `isRequired`
+- 작성한 PropTypes뒤에 `.isRequired`를 붙여주면 해당 prop을 **필수 prop으로 인식**하고,    
+만약 prop의 값이 없거나 잘못되었을 경우 콘솔 창에서 에러가 출력되는 것을 볼 수 있다.   
+
+    <br />
+
+    ***[예제] PropTypes에 isRequired을 설정하고, Component에 prop값을 전달하지 않았을 때***
+
+    ```jsx
+    import PropTypes from 'prop-types';
+
+    export default function Component = ({ name }) => {
+      return (
+        <h1>Hello, {name}</h1>
+      );
+    }
+
+    // name의 데이터 타입을 string으로 지정 
+    Component.propTypes = {
+      name: PropTypes.string.isRequired
+    };
+
+    ReactDOM.render(
+      <Component />,
+      document.querySelector("#root")
+    );
+    ```
+    → name props에 `isRequired` 를 지정했기 때문에 반드시 prop값이 존재해야 한다.   
+    하지만 현재 예제에선 `<Component />` 에 따로 전달 받는 props가 없기 때문에   
+    *`type: The prop `name` is marked as required in `Component`, but its value is `undefined`.`* 이렇게 콘솔창에 에러가 발생하는 것이다!
+
+<br />
+<br />

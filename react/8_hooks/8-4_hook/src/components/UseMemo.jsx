@@ -10,7 +10,7 @@ function sum(persons) {
 export default function UseMemo() {
   const [value, setValue] = useState('');
   const [persons] = useState([
-    { name: 'Mark', age: 30 },
+    { name: 'Mark', age: 35 },
     { name: 'Hanna', age: 20 },
   ])
 
@@ -30,8 +30,8 @@ export default function UseMemo() {
   return (
     <div>
       <input type="text" value={value} onChange={change} />
-      <p>{count}</p>
       <button onClick={click}>click</button>
+      <p>{count}</p>
     </div>
   )
 }
