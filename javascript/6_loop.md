@@ -136,3 +136,23 @@ for(let key in person) {
 >    실행문; 
 > }
 > ```
+
+<br />
+
+***[연습1] 객체 데이터에 for in문을 사용해 key-value형태로 출력하기***
+
+```javascript
+const users = [
+  { name: "Park", age: 25, married: false },
+  { name: "Kim", age: 30, married: true },
+  { name: "Lee", age: 35, married: false },
+]
+
+for(let user of users) {
+  console.log(user);
+}
+
+// {name: 'Park', age: 25, married: false}
+// {name: 'Kim', age: 30, married: true}
+// {name: 'Lee', age: 35, married: false}
+```

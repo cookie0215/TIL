@@ -156,3 +156,26 @@ var str = " Merry Christmas ~! ";
 str.trim();   //'Merry Christmas ~!'  출력 : 중간의 공백은 제거되지 않음을 볼 수 있다
 ```
 <br>
+<br>
+
+# `includes()`
+- 해당 문자열에 찾으려는 문자가 포함되어 있는지 아닌지의 여부를 확인  
+  (공백의 포함 여부도 확인 가능)
+- true , false로 값을 반환
+- 대소문자를 구분한다.
+
+<br>
+
+```javascript
+const str = 'Hello World~! 안녕하세요!';
+
+console.log(str.includes('안녕'));     // true
+console.log(str.includes('hello'));     // false
+console.log(str.includes(' '));     // true
+console.log(str.includes(''));     // true
+console.log(str.includes('.'));     // false
+
+```
+
+<br>
+<br>

@@ -137,3 +137,114 @@ console.log(abc(5,3));    // 15
 > 변수와 함수 둘다 자바스크립트 엔진에 의해 런타임(동작)이전에 먼저 실행되어 식별자를 생성하지만,   
 > 선언된 변수는 값에 undefined를 담아서 초기화하고  
 > 함수 선언문을 통해 암묵적으로 생성된 식별자는 함수 객체로 초기화 한다. 
+
+<br />
+<br />
+
+## 다양한 함수 형태
+
+<br />
+
+### 즉시 실행 함수
+
+<br />
+<br />
+
+### 재귀함수
+
+<br />
+<br />
+
+### 중첩함수
+
+<br />
+<br />
+
+### 콜백함수
+
+<br />
+<br />
+
+### 순수함수
+- 외부 상태에 의존하지 않고, 변경하지도 않는 함수
+- 오직 **매개변수를 통해 함수 내부로 전달된 인수에게만 의존**하여 return값을 만들기 때문에    
+  동일한 인수가 전달되면 언제나 동일한 값을 반환하는 함수이다.   
+
+<br />
+
+***[예제1-1] 순수함수***
+
+```javascript
+var count = 0;
+
+function increase(n){
+  return ++n;
+}
+
+increase(count);
+console.log(count);    // 0
+
+increase(count);
+console.log(count);    // 0
+```
+→ increase함수를 호출할 때 변수 count의 값을 인수로 넣었다.    
+  변수 count의 값이 increase함수의 매개변수 통로를 통해 함수내부로 들어가고   
+
+  .... 질문하기! (왜 1이 아닌 0이 출력될까....)
+
+  참고로 순수함수로서, 외부상태를 변경하지 않는 특징이 있다.   
+  그래서 increase함수가 호출될 때 **반환된 결과값을 다시 count라는 변수에 재할당 하지 않으면**  
+  전달되는 인수(count)의 값은 전역에서 계속 0으로 존재하고 있어 계속   
+
+<br />
+
+***[예제1-2] 예제1-1번 순수함수의 값이 상태변경될 수 있도록 처리***
+
+```javascript
+var count = 0;
+
+function increase(n){
+  return ++n;
+}
+
+count = increase(count);
+console.log(count);      // 1
+
+count = increase(count);
+console.log(count);     // 2
+```
+→ 맨처음 count = 0 으로 할당된 값을 매개변수로 넣어서 결과값 을 반환했고   
+  반환된 1 값을 다시 count변수에 재할당 시켜 increase함수의 인수로 넣었다.   
+
+  맨처음엔 0이라는 값이 들어갔지만 이제 1이라는 값이 재할당되어 들어갔기 때문에   
+  결과값은 2가 반환된다!
+
+
+<br />
+<br />
+
+### 비순수함수
+- 외부 상태에 의존하여 외부 상태를 변경하는 함수
+
+<br />
+
+***[예제1] 비순수함수***
+
+```javascript
+var count = 0;
+
+function increase(){
+  return ++count;
+}
+
+increase();
+console.log(count);  // 1
+
+increase();
+console.log(count);   // 2
+```
+→ 인수로 전달 받지 않고 전역변수 count가 함수 내에서 직접 참조되어 값의 상태가 변경되고 있으므로,    
+  count는 계속 1씩 증가되어 출력된다.
+
+<br />
+<br />
