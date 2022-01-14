@@ -28,7 +28,7 @@ class Button extends React.Component {
       loading: true,
     });
 
-    // 1초 후에 다시 false값으로 변경
+    // 1초 후에 다시 loading을 false값으로 변경
     setTimeout(() => {
       this.setState({
         loading: false,

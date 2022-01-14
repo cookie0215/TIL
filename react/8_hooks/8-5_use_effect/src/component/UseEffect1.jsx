@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-function Practice() {
-  const [conuter, setCounter] = useState(0);
+function Practice1() {
+  const [counter, setCounter] = useState(0);
   const [keyword, setKeyword] = useState('');
 
   const click = () => {
@@ -14,20 +14,24 @@ function Practice() {
   console.log('run all the time');
 
   useEffect(() => {
-    console.log('click run only once');
-  }, [])
+    console.log(`I run when ${counter} counter change`);
+  }, [counter])
 
   // input에 keyword(입력창에 값이 입력될 때) keyword 부분만 실행시켜준다.
   useEffect(() => {
     if (keyword !== '') {
-      console.log('Search for', keyword);
+      console.log(`I run when keyword change, ${keyword}`);
     }
   }, [keyword])
 
+  useEffect(() => {
+    console.log(`I run when keyword & counter change`);
+  }, [keyword, counter])
+
 
   return (
-    <div className="App">
-      <h1>{conuter}</h1>
+    <div>
+      <h1>{counter}</h1>
       <button onClick={click}>click me!</button>
 
       <br />
@@ -40,4 +44,4 @@ function Practice() {
   );
 }
 
-export default Practice;
+export default Practice1;
