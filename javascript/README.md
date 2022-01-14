@@ -16,7 +16,7 @@
 [12. 타입변환과 단축평가](https://github.com/cookie0215/TIL/blob/main/javascript/12_coercion%26short-circuit%20evaluation.md)  
 [13. 객체](https://github.com/cookie0215/TIL/blob/main/javascript/13_object.md)  
 [14. 얕은복사와 깊은복사](https://github.com/cookie0215/TIL/blob/main/javascript/14_shallow_deep.md)   
-[15. ]()   
+[15. 스코프](https://github.com/cookie0215/TIL/blob/main/javascript/15_scope.md)   
 [16. ]()   
 [17. ]()   
 []()   
