@@ -23,7 +23,7 @@ console.log(y); //  ③ ?
 
 정답 ⭕    
   ① `foo()`는  'hello' 출력,    
-  ② `console.log(x);` 는 'global' 출력   
+  ② `console.log(x);` 는 '안녕' 출력   
   ③ `console.log(y);` 는 'Reference Error : y is not defined' 발생
 
 <br />
