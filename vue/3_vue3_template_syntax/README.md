@@ -95,3 +95,43 @@ export default {
   이걸 `v-bind:[attr]="className"` 동적 전달인자형태로 작성했다.  
 
   그래서 `[attr]` 은 data속성에서 `class`라는 문자를 가져와 넣고, 속성값으로 `className` 이라고 작성해서 `active` 문자를 전달해 원하는대로 동작하고 있는 것을 볼 수 있다!
+
+<br />
+<br />
+
+### `v-model`
+
+<br />
+
+> < 작성 방법 >  
+> `v-model=""`  
+
+<br />
+
+- v-model 속성은 `v-bind`와 `v-on`의 기능의 조합으로 동작   
+  → 양방향 데이터 바인딩으로 주로 form태그에 연결되어 동작한다!
+- 영어 외에, 한국어, 중국어, 일본어 등은 데이터가 변경될 때 한글자씩 느리게 반응하는 문제가 있어서  
+  vue공식문서에서도 되도록 `v-bind`와 `v-on`을 사용해서 처리하도록 권고하고 있다.
+
+<br />
+
+```vue
+<template>
+<input 
+  type="text"
+  v-model="addItemText"/>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      addItemText: ''
+    }
+  }
+}
+</script>
+```
+→ input창에 내용을 입력하면 [개발자도구] - [vue]에 <root> 태그가 나타난다.   
+  <root> 태그 등을 하나씩 눌러보면 하단에 data관련 정보가 나타나고,
+  input창에 입력된 내용이 있을 때마다 addItemText의 data가 자동으로 입력내용이 나타나는 것을 볼 수 있다.
