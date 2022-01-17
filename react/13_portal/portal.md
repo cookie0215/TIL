@@ -46,8 +46,73 @@ portal을 사용하면 react tree구조에 부모를 하나 더 만등ㄹ어서 
 
 <br />
 
-2. 
+2. 모달영역을 사용하기 위해 Modal 컴포넌트를 만든다.     
+  → 이 컴포넌트를 사용하면 원하는 JSX 를 id="modal" 을 가진 DOM 엘리먼트에 렌더링할 수 있음
+
+    ```javascript
+    // Modal.js
+    import ReactDOM from "react-dom";
+
+    const Modal = ({ children }) => {
+      const el = document.getElementById('modal')
+      return ReactDOM.createPortal({children}, el)
+    }
+
+    export default Modal;
+    ```
 
 <br />
+
+3. 모달창에 보여줄 내용과 style을 작성하기 위해 MyModal.jsx 파일과 MyModal.css 파일을 만든다.
+
+    ```jsx
+    // MyModal.jsx 
+    import React from 'react';
+    import './MyModal.css';
+
+    const MyModal = () => {
+      return (
+        <div className="MyModal">
+          <div className="content">
+            <h3>이것은 모달</h3>
+            <p>궁시렁 궁시렁 내용입니다.</p>
+            <button>닫기</button>
+          </div>
+        </div>
+      );
+    };
+
+    export default MyModal;
+    ```
+
+<br />
+
+4. 만든 MyModal.jsx파일을 App.js파일에 연결해준다.    
+  이때 portal로 사용할 Modal.js로 감싸서 코드를 작성해준다!
+
+    ```jsx
+      // App.js
+
+      import React from 'react';
+      import MyModal from './MyModal';
+      import ModalPortal from './Modal';
+      import './App.css';
+
+      const App = () => {
+        render() {
+          return (
+            <div className="App">
+              <h1>모달창 만들기!</h1>
+              <Modal>
+                <MyModal />
+              </Modal>
+            </div>
+          );
+        }
+      }
+
+      export default App;
+    ```
+
 <br />
 <br />
