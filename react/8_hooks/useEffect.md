@@ -8,7 +8,17 @@ class컴포넌트는 라이프 사이클 중 `componentDidMount()`,`componentDid
 <br />
 <br />
 
-## useEffect 형태
+## Side Effect (부수효과)
+- 연산이나 함수 실행 시, 반환값 이외에 외부에서 관찰할 수 있는 변화가 있을 때 생기는 것을 의미
+- 즉, 실행 결과에 부수효과가 있다면 사이드 이펙트를 갖고 있다고 생각하면 된다.    
+
+ex) 데이터 가져오기, 타이머 설정하기, 수동으로 React 컴포넌트 DOM수정하기...등
+
+<br />
+<br />
+
+## useEffect
+- 뷰의 렌더링, 상태변화에 따라 사이드 이펙트를 실행하기 위한 Hook
 
 ### `componentDidMount()`,`componentDidUpdate` 기능을 대체해서 사용할 때
 
@@ -173,3 +183,7 @@ useEffect(() => {
 
 - 두번째 파라미터 배열에 특정 값을 넣으면,   
   **특정값이 업데이트 되기 직전에 cleanup 함수를 반환**한다.
+
+
+
+ 

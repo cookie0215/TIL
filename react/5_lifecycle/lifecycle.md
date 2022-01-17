@@ -19,6 +19,16 @@
 라이프사이클마다 각 상황에서 호출되는 메서드들이 존재한다.
 
 <br />
+<br />
+
+크게 Render 단계 , commit 단계 , cleanup 단계로 구분
+
+Render 단계 : Mount와 Updating이 발생
+Commit 단계 : DOM이 업데이트 된 후, 실행되는 단계
+
+
+<br />
+<br />
 
 ### Mount
 

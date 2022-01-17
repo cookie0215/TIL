@@ -40,9 +40,9 @@ prop를 이용해서 컴포넌트간에 데이터를 전달할 때
 
 ## context 사용 방법
 
-### 데이터를 set 하기
+### context를 활용해 데이터 생성
 
-1. `createContext`라는 함수를 사용해 context를 생성한다.   
+- `createContext`라는 함수를 사용해 context를 생성한다.   
   ( React Context는 전역 데이터를 담고 있는 하나의 저장 공간으로 생각한다.)    
 
   *createContext의 첫번째 인자로 기본값을 전달할 수 있다.*
