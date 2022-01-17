@@ -10,7 +10,7 @@ export default function FunctionExample() {
     return () => {
       console.log('ComponentWillUnMount', count);
     }
-  }, [count])
+  }, [])
 
   function click() {
     setCount(count + 1)

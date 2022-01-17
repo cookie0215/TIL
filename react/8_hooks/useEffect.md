@@ -1,5 +1,5 @@
 # [TIL] React_useEffect
-useEffect는 라이프 사이클 혹 중 `componentDidMount()`,`componentDidUpdate`, `ComponentWillUnMount` 이 3개를 대체해서 사용할 수 있다.    
+class컴포넌트는 라이프 사이클 중 `componentDidMount()`,`componentDidUpdate`, `ComponentWillUnMount` 이 3개를 대체해서 사용할 수 있다.    
 (대체해서 사용할 순 있지만, 저 3개의 훅과 useEffect가 완전 동일한 기능을 하는 것은 아니다!)
 
 → 즉, useEffect는 컴포넌트가 렌더링 될 때마다 특정 작업을 실행할 수 있도록 하는 Hook으로,   

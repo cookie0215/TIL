@@ -59,9 +59,15 @@ import React from 'react';
   - [8-1) useState](https://github.com/cookie0215/TIL/blob/main/react/3_props_state/state.md)   
   - [8-2) useEffect](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/useEffect.md)   
   - [8-3) customHook](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/customHook.md)   
-  - [8-4) additionalHook](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/additionalHook.md)   
+  - [8-4) additionalHook](https://github.com/cookie0215/TIL/blob/main/react/8_hooks/additionalHook.md)     
+
+<br />
 
 [9. context](https://github.com/cookie0215/TIL/blob/main/react/9_component/context.md)    
-[]()   
-[]()   
+10. jest   
+11. shadowDOM    
+
+[12. controlled와 uncontrolled](https://github.com/cookie0215/TIL/blob/main/react/12_controlled_uncontrolled/controlled_uncontrolled.md)   
+
+[13. ]()   
 
