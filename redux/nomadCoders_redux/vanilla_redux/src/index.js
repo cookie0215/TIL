@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const add = document.getElementById('add');
+const minus = document.getElementById('minus');
+const number = document.querySelector('span');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const reducer = (count = 0, action) => {
+  if (action.type === 'ADD') {
+    return count + 1;
+  } else if (action.type === 'MINUS') {
+    return count - 1;
+  } else {
+    return count;
+  }
+}
+const store = createStore(reducer);
+
+
+const handleAdd = () => {
+  store.dispatch({ type: 'ADD' });
+}
+const handleMinus = () => {
+  store.dispatch({ type: 'MINUS' });
+}
+
+add.addEventListener('click', handleAdd)
+minus.addEventListener('click', handleMinus)
+
+const onchange = () => {
+  // store 상태가 변경될 때마다 값이 <span>에 나타남
+  number.innerText = store.getState();
+}
+console.log(store.subscribe(onchange));
