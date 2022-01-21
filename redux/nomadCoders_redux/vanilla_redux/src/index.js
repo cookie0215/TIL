@@ -4,23 +4,27 @@ const add = document.getElementById('add');
 const minus = document.getElementById('minus');
 const number = document.querySelector('span');
 
+const ADD = 'ADD';
+const MINUS = 'MINUS';
+
 const reducer = (count = 0, action) => {
-  if (action.type === 'ADD') {
-    return count + 1;
-  } else if (action.type === 'MINUS') {
-    return count - 1;
-  } else {
-    return count;
+  switch (action.type) {
+    case ADD:
+      return count + 1;
+    case MINUS:
+      return count - 1;
+    default:
+      return count;
   }
 }
 const store = createStore(reducer);
 
 
 const handleAdd = () => {
-  store.dispatch({ type: 'ADD' });
+  store.dispatch({ type: ADD });
 }
 const handleMinus = () => {
-  store.dispatch({ type: 'MINUS' });
+  store.dispatch({ type: MINUS });
 }
 
 add.addEventListener('click', handleAdd)

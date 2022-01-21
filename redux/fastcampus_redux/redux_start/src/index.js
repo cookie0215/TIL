@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './redux/store';
-import ReduxContext from './contexts/ReduxContext';
+import { Provider } from 'react-redux';
+
 // import { addTodo, completeTodo, showComplete } from './redux/actions';
 
 // store의 변경 상황이 생기는 것을 파악한다 (store상태가 변경되면 함수호출됨)
@@ -20,9 +21,9 @@ import ReduxContext from './contexts/ReduxContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ReduxContext.Provider value={store}>
+    <Provider store={store}>
       <App />
-    </ReduxContext.Provider>
+    </Provider>
   </React.StrictMode >,
   document.getElementById('root')
 );
