@@ -1,4 +1,4 @@
-# [TIL] JS_생명주기 및 var,let,const
+# [TIL] JS_생명주기
 
 *< 관련 내용 참고하기 >*    
 [변수 개념](https://github.com/cookie0215/TIL/blob/main/javascript/1_variable.md)   
