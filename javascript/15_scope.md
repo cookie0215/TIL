@@ -2,7 +2,9 @@
 
 *< 관련 내용 참고하기 >*    
 [변수 개념](https://github.com/cookie0215/TIL/blob/main/javascript/1_variable.md)   
-[변수의 Lifecycle & var, let, const 키워드](https://github.com/cookie0215/TIL/blob/main/javascript/16_lifecycle_var_let_const.md)   
+[변수의 Lifecycle](https://github.com/cookie0215/TIL/blob/main/javascript/16_lifecycle_var_let_const.md)   
+[var,let, const 비교](https://github.com/cookie0215/TIL/blob/main/javascript/17_변수키워드.md)   
+
 
 <br />
 
