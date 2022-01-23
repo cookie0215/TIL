@@ -1,5 +1,8 @@
-# [TIL] React_CSS 적용하는 법
-React에서 style을 적용하는 방법에는 여러가지가 있다.
+# [TIL] React_기본 CSS & CSS Module
+React에서 style을 적용하는 방법에는 여러가지가 있다.    
+
+[Styled Components](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components.md)         
+[Emotion](https://github.com/cookie0215/TIL/blob/main/react/7_style/emotion.md)   
 
 <br />
 
@@ -72,6 +75,7 @@ export default App;
 
 <br />
 <br />
+<br />
 
 ## CSS Module 방식
 - CRA에서 제공하는 css모듈은 스타일을 각 클래스명에 부여할 때 전역적으로 **오염될 수 있는 상황을 막기 위해**
@@ -131,30 +135,6 @@ export default App;
   border-radius: 10;
 }
 ```
-
-<br />
-<br />
-
-## styled-components 방식
-- Styled-Components 라이브러리 이용해서 컴포넌트에 스타일을 적용
-- css를 js와 분리시키지 않고 js파일(컴포넌트) 내에서 스타일을 관리할 수 있다.
-- hover 또는 가상클래스를 `&`를 통해 적용할 수 있다.
-
-<br />
-
-### styled-components 사용 방법
-
-1. `npm i styled-components`   
-  : 해당 프로젝트 터미널에 styled-components 라이브러리를 설치한다.
-
-2. `import styled from "styled-components";`    
-  : 해당 컴포넌트에 import로 설치된 styled-components 라이브러리를 가져온다. 
-
-
-<br />
-<br />
-
-## Emotion 방식
 
 <br />
 <br />
