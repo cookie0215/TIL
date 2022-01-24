@@ -9,7 +9,9 @@
 
 *[styled-components 공식 사이트](https://styled-components.com/)*
 
-- Styled-Components 라이브러리 이용해서 컴포넌트에 스타일을 적용
+- Styled-Components 라이브러리 이용해서 컴포넌트에 스타일을 적용    
+  → 템플릿 리터럴과 CSS의 기능을 활용하여 실제 CSS 코드를 작성하여 구성 요소의 스타일을 지정     
+
 - css를 js와 분리시키지 않고 js파일(컴포넌트) 내에서 스타일을 관리할 수 있다.   
   → 하나의 파일 안에 style을 지정한 컴포넌트를 만든다.   
 
@@ -33,8 +35,9 @@
 
 <br />
 <br />
+<br />
 
-### styled-components 사용 방법
+## styled-components 사용 방법
 
 1. `npm i styled-components`   
   : 해당 프로젝트 터미널에 styled-components 라이브러리를 설치한다.
