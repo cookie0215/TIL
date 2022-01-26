@@ -109,7 +109,21 @@ url과 함께 연결된 저장소를  확인할 수 있다.
 ### git push origin main
 원격저장소에 작업한 내용을 업로드 시킬 수 있는 명령어
 
+<br />
 
+> ***`![rejected] main -> main (non-fast-forward)` 에러 발생 시 해결 방법***   
+> <br />
+> git clone을 먼저 해서 프로젝트를 진행하는 것이 아니라,   
+> 프로젝트를 먼저 작업한 뒤, git remote를 통해 github repository에 프로젝트를 넣는 경우    
+> `git remote add origin 레포url → git pull origin main → git push origin main` 이렇게 과정이 진행되는데    
+> 만약 repository 만들 때 `README.md`파일을 체크하고 만들었다면 push 할 때 계속 에러가 발생하는 것을 볼 수 있다!😥    
+> <br />
+> 💚 **해결 방법**    
+> `git push origin +main` 이렇게 `+` 기호를 붙여서 작성하면 된다!!
+
+
+<br />
+<br />
 
 ## 브랜치 생성/삭제/merge
 
