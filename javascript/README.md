@@ -19,6 +19,6 @@
 [15. 스코프](https://github.com/cookie0215/TIL/blob/main/javascript/15_scope.md)   
 [16. Life Cycle](https://github.com/cookie0215/TIL/blob/main/javascript/16_lifecycle.md)     
 [17. var, let, const키워드](https://github.com/cookie0215/TIL/blob/main/javascript/17_변수키워드.md)   
-[]()   
+[18. Property]()   
 []()   
 []()   
