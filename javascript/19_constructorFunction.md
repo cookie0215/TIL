@@ -194,6 +194,10 @@ alert(person.name);
 <br />
 <br />
 
+<hr />
+
+<br />
+
 ***[문제1] `new A()==new B()`가 성립 가능한 함수 A와 B를 만드는 게 가능한지 고민해보기***
 
 ```javascript
