@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,12 +14,13 @@
   <!-- Babel CDN연결 -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
+
 <body>
   <div id="root"></div>
 </body>
 <script type="text/babel">
   class Component extends React.Component {
-    constructor(props){
+    constructor(props) {
       super(props);
       this.state = {
         count: 0
@@ -41,9 +43,9 @@
           }
           return newState;
         })
-      },1000)
+      }, 1000)
     }
-    
+
     static defaultProps = {
       message: 'class컴포넌트에서 사용할 수 있는 기본값'
     }
@@ -54,4 +56,5 @@
     document.querySelector("#root")
   );
 </script>
+
 </html>

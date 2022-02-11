@@ -45,7 +45,11 @@
 2. `import styled from "styled-components";`    
   : 해당 컴포넌트에 import로 설치된 styled-components 라이브러리를 가져온다. 
 
+<br />
 
+### [styled-components에서 reset파일 적용하기](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components2.md)
+
+<br />
 <br />
 
 ***[예제1] styled-component를 사용한 예제***
