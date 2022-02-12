@@ -61,7 +61,7 @@ import React from 'react';
 7. React 스타일     
   - [7-1) 기본 CSS & CSS Module](https://github.com/cookie0215/TIL/blob/main/react/7_style/react_style.md)     
   - [7-2-1) Styled Components](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components1.md)         
-  - [7-2-2) Styled Components : Reset설정](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components2.md)         
+  - [7-2-2) Styled Components : reset & theme](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components2.md)         
   - [7-3) Emotion](https://github.com/cookie0215/TIL/blob/main/react/7_style/emotion.md)         
 
 8. Hook  

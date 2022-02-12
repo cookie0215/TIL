@@ -47,9 +47,13 @@
 
 <br />
 
-### [styled-components에서 reset파일 적용하기](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components2.md)
+#### *[💛 styled-components에서 reset파일 적용하는 법](https://github.com/cookie0215/TIL/blob/main/react/7_style/styled_components2.md)*
 
 <br />
+<br />
+
+## styled-components 사용 예제
+
 <br />
 
 ***[예제1] styled-component를 사용한 예제***
