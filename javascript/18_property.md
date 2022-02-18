@@ -287,6 +287,16 @@ console.log(descriptor2);
 <br />
 <br />
 
+### 불변 객체로 만드는 방법
+
+```javascript
+function freeze(obj) { 
+  Object.keys(obj).forEach((key) => 
+    typeof obj[key] === "object" ? freeze(obj[key]) : Object.freeze(obj) 
+  ); 
+}
+```
+
 
 
 
