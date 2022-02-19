@@ -24,12 +24,18 @@
 <br />
 
 ## 상속
-- 어떤 객체의 프로퍼티 또는 메서드를 다른 객체가 상속받아 그대로 사용할 수 있는 것
+- 어떤 객체의 프로퍼티 또는 메서드를 다른 객체가 상속받아서 그대로 사용할 수 있는 것
 - 코드 재사용에 유용 (불필요한 중복을 제거할 수 있다!)
 
 <br />
 
 ![Untitled-1](https://user-images.githubusercontent.com/81572770/154735557-37753218-80e5-4988-94df-f0851fdac4bf.png)
+
+첫번째 예시의 생성자 함수 Circle은 인스턴스를 생성할 때마다 각각의 인스턴스들 모두 내용이 똑같은 getArea 메서드를 중복 생성, 소유하게 된다. 
+
+→ 메모리를 불필요하게 낭비함
+
+→ 그래서 두번째 예시처럼 프로토타입기반의 상속을 활용해 불필요한 중복을 제거할 수 있다.
 
 <br />
 <br />
@@ -39,7 +45,7 @@
 
 - 상속을 구현하기 위해 사용
 - 어떤 객체의 상위(부모) 객체 역할 을 하는 객체임    
-  → 해당 프로퍼티 또는 메서드를 다른 객체에서 사용할 수 있도록 공유한다.
+  → 프로토타입(부모객체)은 하위(자식)객체에게 자신의 프로퍼티와 메서드를 사용할 수 있도록 만든다. (상속할 수 있도록 만듬!)
 
 - **객체 생성 방식에 따라** 프로토타입이 결정됨 (그리고 `[[Prototype]]` 내부슬롯에 저장됨)    
 
@@ -51,8 +57,10 @@
 
 ### `__proto__` 접근자 프로퍼티
 
+- 자체적으로 값을 갖지 않고 **다른 데이터 프로퍼티의 값을 읽거나 저장할 때 호출되는 접근자 함수(getter, setter함수)로 구성된 프로퍼티**이다.
 - `__proto__`접근자 프로퍼티는 **Object.prototype의 프로퍼티**이다.    
-  (객체가 직접 소유하고 있지 않다!!)
+  (해당 객체가 직접 소유하고 있지 않다!!)
+  
 - `[[Prototype]]` 내부슬롯인 프로토타입에 간접적으로 접근 가능    
   → 프로토타입 체인이 생성되는 것을 방지하기 위해 `__proto__`을 사용해서 간접 접근하는 것이다!!
 
@@ -140,8 +148,55 @@ Object.setPrototypeOf(parent,obj);
 <br />
 
 
-### 
+### prototype 프로퍼티
 
+- (내부 메서드 `[[Construct]]`를 갖는) 함수 객체 만이 소유하고 있는 프로퍼티이다.    
+  → 즉, constructor 만이 소유한 프로퍼티
+- non-constructor는 `prototype 프로퍼티`를 갖고 있지 않고 프로토타입을 생성하지도 않는다!    
+  (non-constructor : 화살표함수, ES6 메서드 축약표현)
+
+- `prototype 프로퍼티`는 생성자 함수가 생성할 인스턴스의 프로토타입을 가리킨다.
+
+<br />
+<br />
+
+***[예제1] 일반함수와 화살표함수가 `prototype 프로퍼티`를 갖고 있는지 확인해보기***
+
+```javascript
+/* 딥다이브 예제 19-12 ~ 19-13 */
+
+// constructor인 일반 함수
+function Person1(name) {
+    this.name = name;
+}
+
+console.log(Person1.hasOwnProperty('prototype'))    // true
+console.log(Person1.prototype)    // {constructor: ƒ}
+
+const me1 = new Person1('Lee');
+console.log(me1);      // Person1 {name: 'Lee'}
+
+console.log(Person1.prototype === me1.__proto__)    // true
+
+
+
+// non-constructor인 화살표 함수
+const Person2 = (name) => {
+    this.name = name;
+}
+
+console.log(Person2.hasOwnProperty('prototype'))    // false
+console.log(Person2.prototype)   // undefined
+
+const me2 = new Person2('Lee');
+console.log(me2);   // TypeError: Person2 is not a constructor
+```
+non-constructor인 화살표 함수는 `prototype 프로퍼티`을 갖고 있지도 않고, prototype도 생성하지 않는다.
+
+또한 new 연산자와 함께 생성자함수로 호출할 수 없다. (에러 발생)
+
+`console.log(Person1.prototype === me1.__proto__)`를 통해 `__proto__`접근자 프로퍼티와 `prototype 프로퍼티`는    
+동일한 프로토타입을 가리키는 것을 볼 수 있다...😂(좀 더 공부해서 찾아볼 것...!)
 <br />
 <br />
 
