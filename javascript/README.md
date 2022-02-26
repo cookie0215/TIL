@@ -22,7 +22,7 @@
 [18. Property](https://github.com/cookie0215/TIL/blob/main/javascript/18_property.md)   
 [19. 생성자 함수](https://github.com/cookie0215/TIL/blob/main/javascript/19_constructorFunction.md)   
 [20. 일급객체](https://github.com/cookie0215/TIL/blob/main/javascript/20_firstClassObject.md)       
-[21. 프로토타입](https://github.com/cookie0215/TIL/blob/main/javascript/21_prototype)   
+[21. 프로토타입](https://github.com/cookie0215/TIL/blob/main/javascript/21_prototype.md)   
 [22. ]()   
 [23. ]()   
 [24. ]()   

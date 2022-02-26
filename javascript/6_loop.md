@@ -119,6 +119,8 @@ for(let key in person) {
 // age , 20
 // married , false
 ```
+person객체의 프로퍼티 갯수만큼 순회하면서, `for...in`문의 루프변수(변수선언문 부분)에 person객체가 갖고 있는 프로퍼티 key를 할당한다.   
+→ 그래서 3개의 프로퍼티 key (name, age, married)를 반환함
 
 <br />
 <br />
