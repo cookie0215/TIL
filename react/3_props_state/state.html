@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State</title>
+
+  <!-- react CDN연결 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel CDN연결 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+  class Component extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        count: 0
+      }
+    }
+
+    render() {
+      return (
+        <div>
+          <h1>{this.props.message} 이것은 클래스로 만든 컴포넌트입니다.</h1>
+          <p>{this.state.count}</p>
+        </div>
+      )
+    }
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState((prevState) => {
+          const newState = {
+            count: prevState.count + 1
+          }
+          return newState;
+        })
+      }, 1000)
+    }
+
+    static defaultProps = {
+      message: 'class컴포넌트에서 사용할 수 있는 기본값'
+    }
+  }
+
+  ReactDOM.render(
+    <Component />,
+    document.querySelector("#root")
+  );
+</script>
+
+</html>

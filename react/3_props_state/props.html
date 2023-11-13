@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Props</title>
+
+  <!-- react CDN연결 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+  <!-- Babel CDN연결 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+  // props : 값이 변경되면 리렌더링이 발생한다.
+
+  /*
+  // 함수 컴포넌트
+  // 함수 컴포넌트에서는 props를 전달 받을 때 함수 인자로 props를 전달 받기 때문에 this가 필요 없다.
+  function Component(props) {
+    return (
+      <div>
+        <h1>{props.message} 이것은 함수로 만든 컴포넌트입니다.</h1>
+      </div>
+    )
+  }
+
+  Component.defaultProps = {
+    message: '함수,class 컴포넌트 모두 사용가능한 기본값',
+  }
+  */
+
+  // class 컴포넌트
+  // class 컴포넌트에서 props를 전달 받을 땐 this.props로 작성해야 한다!
+  class Component extends React.Component {
+    render() {
+      return (
+        <div>
+          <h1>{this.props.message} 이것은 클래스로 만든 컴포넌트입니다.</h1>
+        </div>
+      )
+    }
+
+    static defaultProps = {
+      message: 'class컴포넌트에서 사용할 수 있는 기본값'
+    }
+  }
+
+  ReactDOM.render(
+    <Component />,
+    document.querySelector("#root")
+  );
+</script>
+
+</html>

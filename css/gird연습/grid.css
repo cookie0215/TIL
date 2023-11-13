@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* 공통 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+ul,ol,li {
+    list-style: none;
+}
+img {display: block;}
+
+/* 기본 세팅 */
+.wrapper {
+    display: grid;
+    
+    /*가로 3칸 (선이 4개)*/
+    grid-template-columns: repeat(3, 1fr);
+    
+    grid-template-rows: repeat(4, 150px);
+  }
+  .wrapper > div { 
+    background-color: yellow; 
+  }
+  .wrapper > div:nth-child(even) { 
+    background-color: yellowgreen;
+  }
+  a:link {
+    font: normal 24px/1 "arial";
+    color: black;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    font: bold 48px/1 "arial" ; 
+    color: green;
+    text-decoration: underline;
+  }
