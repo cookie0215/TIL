@@ -1,4 +1,4 @@
-# fastApi
+# fastApi란?
 - FastAPI : Python에서 많이 사용되는 프레임워크
 - pip : Python 패키지 관리자의 일종
 
@@ -53,3 +53,28 @@ def sayHello():
 def sayWelcome():
     return {"message" : "환영합니다! 메인페이지 입니다~"}
 ```
+
+## index.html 파일을 서버에 연결하는 방법
+
+### 1. index.html 와 main.py 파일을 만든다.
+: 여기서 index.html, css, js 파일은 모두 static 이라는 폴더를 만들어서 그 곳에 넣어둔다.
+![Alt text](image.png)
+
+### 2. main.py에 fastAPI를 작성한다.
+
+```python
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+
+app = FastAPI()
+
+app.mount("/", StaticFiles(directory='static', html=True), name='static')
+
+```
+→ FastAPI를 만들고, root(/)경로에 우리의 static파일에 있는 html을 호스팅 해라라는 의미이다.
+
+<br>
+
+### 3. `$ uvicorn [파일명]:app --reload`
+: main.py에 있는 app이라는 객체를 띄울 건데, reload 형식으로 띄워달라는 의미

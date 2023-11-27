@@ -59,7 +59,21 @@
   => 조건에 해당하는 유저들을 찾을 수 있다 (없거나, 여러명일 수 있다는 의미)
 
 ### 3. Request Body를 이용해서 정보를 전달하는 방법
+  -  클라이언트가 API로 데이터를 보낼때 사용되는 데이터
   - get요청이 아닌 `post 요청`을 사용한다.
+  - 하나의 Request에는 Head, Body로 이루어진 부분이 존재한다.
+
+    > **Head** <br>
+    > Request에 대한 여러가지 부가적인 정보들이 들어있다.
+    > 그리고 여기에는 method값이 존재한다.
+    > 
+    > **Body** <br>
+    > Request에 대한 실제 데이터를 담고있는 부분이다.
+    > Request를 보낼 때 어떤 데이터를 함께 보내야 된다면, body에 담아서 보내야 된다.
+    > 
+    > **POST & PUT**
+    > 예를 들어서 data를 추가할 때의 `POST request`와 기존 data를 새로운 data로 수정할 때의 `PUT request`는 보통 **body에 data를 담아서 보내줘야 된다.**
+
 
 <br>
 
@@ -68,5 +82,21 @@
 ### get
 : 우리가 서버에다 요청을 보낼 때, 어떤 값을 조회할 때 (알려달라고 할 때) 사용
 
+> **GET & DELETE** <br>
+> 그에 비해 단순히 데이터를 조회하는 `GET request`와 기존의 data를 삭제할 때 사용하는 `DELETE request`는 body에 아무런 정보를 담지 않아도 된다. (body가 필요 없다!)
+
+```javascript
+// get 요청 방식 : 서버에게 값을 달라는 의미
+async function createMemo(value) {
+  const res = await fetch("/memos");
+}
+```
+
 ### post 요청
-: 현재 갖고 있는 어떠한 값이 있는데, 이 값에 대해 서버의 데이터를 업데이트 또는 새로 등록해달라고 요청할 때 사용
+- 현재 갖고 있는 어떠한 값이 있는데, 이 값에 대해 서버의 데이터를 업데이트 또는 새로 등록해달라고 요청할 때 사용
+
+- post요청 방식을 사용하려면 아래와 같이 추가적인 옵션을 작성해줘야 한다.
+
+```javascript
+
+```

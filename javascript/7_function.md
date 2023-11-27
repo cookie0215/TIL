@@ -117,6 +117,11 @@ console.log(abc(5,3));    // 15
 <br />
 
 ### 4. 화살표 함수 (ES6)
+- function 키워드 대신, `=>` 를 이용해서 함수를 선언해주는 것이다.
+
+```javascript
+const sum = (a, b) => a + b;
+```
 
 <br />
 <br />
